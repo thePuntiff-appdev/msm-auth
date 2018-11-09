@@ -17,24 +17,13 @@
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Movie
         </th>
 
         <th>
-          User
-        </th>
-
-        <th>
           Created at
-        </th>
-
-        <th>
-          Updated at
         </th>
 
         <th>
@@ -43,28 +32,20 @@
 
       <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td>
-          <%= bookmark.id %>
-        </td>
 
         <td>
-          <%= bookmark.movie_id %>
-        </td>
-
-        <td>
-          <%= bookmark.user_id %>
+          <a href="/movies/"<%= bookmark.movie_id %> >
+            <%= Movie.find(bookmark.movie_id).title %>
+          </a>
         </td>
 
         <td>
           <%= time_ago_in_words(bookmark.created_at) %> ago
         </td>
-        <td>
-          <%= time_ago_in_words(bookmark.updated_at) %> ago
-        </td>
 
         <td>
-          <a href="/bookmarks/<%= bookmark.id %>">
-            Show details
+          <a href="/delete_bookmark/<%= bookmark.id %>">
+            Delete
           </a>
         </td>
       </tr>
